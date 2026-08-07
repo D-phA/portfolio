@@ -147,11 +147,7 @@ export const projects: Project[] = [
     ],
     tags: ["C++", "OpenGL", "SDL", "OpenCV", "Depth camera", "Pathfinding"],
     repoUrl: "https://github.com/D-phA/DunesTowerDefense",
-    // TODO(Dunes repo): confirm this repo link. The original hackathon repo is
-    // owned by a teammate and Daphne's commits are not yet attributed to her.
-    // Point this at her own attributed fork/mirror (crediting the teammate)
-    // once that is set up, or update to the canonical repo.
-    repoNote: "Team project. Repo link is a placeholder to confirm.",
+    repoNote: "Build18 team project; this is my attributed repository, which credits the original team repo in its README.",
     media: [
       {
         src: "",
