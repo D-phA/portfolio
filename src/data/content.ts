@@ -15,9 +15,9 @@
  * ====================================================================
  */
 
-// TODO(LINKEDIN_URL): confirmed present in resume files; verify it is correct.
+// LinkedIn: confirmed correct by Daphne (daphne-defne-avkarogullari).
 export const LINKEDIN_URL =
-  "https://www.linkedin.com/in/daphne-defne-avkarogullari";
+  "https://www.linkedin.com/in/daphne-defne-avkarogullari/";
 
 export const GITHUB_URL = "https://github.com/D-phA";
 
@@ -149,15 +149,19 @@ export const projects: Project[] = [
     repoUrl: "https://github.com/D-phA/DunesTowerDefense",
     repoNote: "Build18 team project; this is my attributed repository, which credits the original team repo in its README.",
     media: [
+      // TODO(media): add a gameplay photo or the projected sandbox to
+      // /public/media (e.g. dunes-1.jpg) and set src to "/media/dunes-1.jpg".
+      // Until src is set, a tasteful "Media coming soon" tile renders here.
       {
         src: "",
         alt: "Dunes Tower Defense: topographic projection on the sandbox",
-        caption: "TODO: add gameplay photo or the projected sandbox",
+        caption: "Topographic projection on the physical sandbox",
       },
+      // TODO(media): add a demo video still or OpenCV detection screenshot.
       {
         src: "",
         alt: "Dunes Tower Defense: OpenCV tower-piece detection",
-        caption: "TODO: add a demo video or detection screenshot",
+        caption: "OpenCV tower-piece detection synced with game state",
       },
     ],
   },
@@ -175,10 +179,13 @@ export const projects: Project[] = [
     // No public repo for FanBuddy.
     repoNote: "No public repo yet.",
     media: [
+      // TODO(media): add a photo of the FanBuddy build to /public/media
+      // (e.g. fanbuddy-1.jpg) and set src to "/media/fanbuddy-1.jpg".
+      // Until src is set, a tasteful "Media coming soon" tile renders here.
       {
         src: "",
         alt: "FanBuddy Robot: the 3D-printed person-tracking fan",
-        caption: "TODO: add a photo of the FanBuddy build",
+        caption: "The 3D-printed person-tracking fan build",
       },
     ],
   },

@@ -25,6 +25,9 @@ function Media({ slot }: { slot: MediaSlot }) {
     );
   }
 
+  // No real asset yet: render a tasteful placeholder tile. We intentionally
+  // show a neutral "Media coming soon" label plus the descriptive alt text,
+  // never a raw "TODO" string, so the card looks finished rather than broken.
   return (
     <div
       className="flex min-h-40 flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-ink-600 bg-ink-800/40 p-6 text-center"
@@ -45,7 +48,8 @@ function Media({ slot }: { slot: MediaSlot }) {
         <circle cx="9" cy="10" r="1.6" />
         <path d="m4 18 5-5 4 4 3-3 4 4" />
       </svg>
-      <p className="text-xs font-medium text-mist-400">{slot.caption}</p>
+      <p className="text-xs font-semibold text-mist-300">Media coming soon</p>
+      <p className="text-xs text-mist-400">{slot.alt}</p>
     </div>
   );
 }

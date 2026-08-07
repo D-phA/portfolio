@@ -69,15 +69,23 @@ export function Hero() {
           >
             <LinkedInIcon /> LinkedIn
           </a>
-          {/* TODO(RESUME_URL): links to "#" until the resume PDF is hosted. */}
-          <a
-            href={RESUME_URL}
-            target={RESUME_URL === "#" ? undefined : "_blank"}
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg border border-ink-600 bg-ink-800/40 px-5 py-3 text-sm font-semibold text-mist-100 backdrop-blur transition-colors duration-200 hover:border-accent-400/60 hover:text-accent-300"
-          >
-            <DocumentIcon /> Resume
-          </a>
+          {/*
+            Resume button: only rendered once a real resume link exists.
+            While RESUME_URL is "#" or empty we hide it entirely so there is
+            never a dead link in the hero. To add a resume later, set
+            RESUME_URL in src/data/content.ts to the hosted PDF URL and this
+            button appears automatically.
+          */}
+          {RESUME_URL && RESUME_URL !== "#" ? (
+            <a
+              href={RESUME_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg border border-ink-600 bg-ink-800/40 px-5 py-3 text-sm font-semibold text-mist-100 backdrop-blur transition-colors duration-200 hover:border-accent-400/60 hover:text-accent-300"
+            >
+              <DocumentIcon /> Resume
+            </a>
+          ) : null}
         </div>
 
         <a
