@@ -4,71 +4,59 @@ import { Section } from "./Section";
 import { Reveal } from "./Reveal";
 import { GitHubIcon, ArrowIcon } from "./icons";
 
-function Media({ slot }: { slot: MediaSlot }) {
-  if (slot.video) {
-    return (
-      <figure className="overflow-hidden rounded-lg border border-ink-700/70">
-        <video
-          poster={slot.src}
-          aria-label={slot.alt}
-          className="h-full w-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-        >
-          <source src={slot.video.webm} type="video/webm" />
-          <source src={slot.video.mp4} type="video/mp4" />
-        </video>
-        <figcaption className="bg-ink-800/70 px-3 py-2 text-xs text-mist-400">
-          {slot.caption}
-        </figcaption>
-      </figure>
-    );
-  }
+// Every tile is the same 4:3 frame so a row of them lines up regardless of
+// whether the source is a landscape photo or a portrait phone clip. Portrait
+// material is letterboxed rather than cropped - cropping the Build18 clip cuts
+// the monitor, which is the part worth seeing.
+const FRAME = "aspect-[4/3] w-full overflow-hidden bg-ink-950";
 
-  if (slot.src) {
+function Media({ slot }: { slot: MediaSlot }) {
+  const fit = slot.portrait ? "object-contain" : "object-cover";
+
+  if (!slot.src && !slot.video) {
     return (
-      <figure className="overflow-hidden rounded-lg border border-ink-700/70">
-        <img
-          src={slot.src}
-          alt={slot.alt}
-          loading="lazy"
-          className="h-full w-full object-cover"
-        />
-        {slot.caption ? (
-          <figcaption className="bg-ink-800/70 px-3 py-2 text-xs text-mist-400">
-            {slot.caption}
-          </figcaption>
-        ) : null}
-      </figure>
+      <div
+        className="flex aspect-[4/3] flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-ink-600 bg-ink-800/40 p-6 text-center"
+        role="img"
+        aria-label={slot.alt}
+      >
+        <span className="text-sm text-mist-400">Media coming soon</span>
+      </div>
     );
   }
 
   return (
-    <div
-      className="flex min-h-40 flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-ink-600 bg-ink-800/40 p-6 text-center"
-      role="img"
-      aria-label={slot.alt}
-    >
-      <svg
-        viewBox="0 0 24 24"
-        width="28"
-        height="28"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        className="text-mist-400"
-        aria-hidden="true"
-      >
-        <rect x="3" y="4" width="18" height="16" rx="2" />
-        <circle cx="9" cy="10" r="1.6" />
-        <path d="m4 18 5-5 4 4 3-3 4 4" />
-      </svg>
-      <p className="text-xs font-semibold text-mist-300">Media coming soon</p>
-      <p className="text-xs text-mist-400">{slot.alt}</p>
-    </div>
+    <figure className="overflow-hidden rounded-lg border border-ink-700/70">
+      <div className={FRAME}>
+        {slot.video ? (
+          <video
+            poster={slot.src}
+            aria-label={slot.alt}
+            className={`h-full w-full ${fit}`}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+          >
+            <source src={slot.video.webm} type="video/webm" />
+            <source src={slot.video.mp4} type="video/mp4" />
+          </video>
+        ) : (
+          <img
+            src={slot.src}
+            alt={slot.alt}
+            loading="lazy"
+            className={`h-full w-full ${fit}`}
+          />
+        )}
+      </div>
+      {slot.caption ? (
+        <figcaption className="bg-ink-800/70 px-3 py-2 text-xs text-mist-400">
+          {slot.caption}
+        </figcaption>
+      ) : null}
+    </figure>
   );
 }
 

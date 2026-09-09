@@ -96,6 +96,8 @@ export interface MediaSlot {
   caption: string;
   /** Set for a silent looping clip; `src` is then used as its poster. */
   video?: { mp4: string; webm: string };
+  /** Phone-shot vertical media, shown whole instead of cropped to the tile. */
+  portrait?: boolean;
 }
 
 export interface Project {
@@ -157,9 +159,17 @@ export const projects: Project[] = [
     repoNote: "No public repo yet.",
     media: [
       {
-        src: "",
-        alt: "FanBuddy Robot: the 3D-printed person-tracking fan",
-        caption: "The 3D-printed person-tracking fan build",
+        src: "media/fanbuddy-1.jpg",
+        alt: "The finished fan: a five-blade 3D-printed impeller on a black housing, with the rack-and-pinion that rotates it",
+        caption: "The build: printed impeller, housing, and the gear that pans it",
+        portrait: true,
+      },
+      {
+        src: "media/fanbuddy-demo-poster.jpg",
+        alt: "FanBuddy running at the Build18 demo table, with the tracking view on the monitor behind it",
+        caption: "Running at Build18; the tracker's view is on the monitor",
+        video: { mp4: "media/fanbuddy-demo.mp4", webm: "media/fanbuddy-demo.webm" },
+        portrait: true,
       },
     ],
   },
