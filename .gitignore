@@ -11,8 +11,7 @@ node_modules
 dist-ssr
 *.local
 
-# NOTE: dist/ is intentionally committed for this portfolio (built output
-# is tracked so it can be reviewed / deployed). Do not add "dist" here.
+dist
 
 # Editor directories and files
 .vscode/*

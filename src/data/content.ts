@@ -1,35 +1,14 @@
-/**
- * Single source of truth for all visible copy on the site.
- * Everything here is grounded in Daphne's real resume / info files.
- * Do not fabricate or inflate. Cisco copy uses public product names and
- * relative metrics only (no dollar figures, ticket IDs, codenames, names,
- * or absolute fleet numbers).
- *
- * ====================================================================
- * PLACEHOLDERS DAPHNE MUST FILL IN (search the repo for "TODO"):
- *   1. LINKEDIN_URL  - verify the LinkedIn handle below is correct.
- *   2. RESUME_URL    - drop in a link to the resume PDF when hosted.
- *   3. Project media - add real photos / video into /public/media
- *                      and point the media entries below at them.
- *   4. Dunes repo    - confirm the GitHub repo link (see note below).
- * ====================================================================
- */
+// Every string the site renders lives here.
 
-// LinkedIn: confirmed correct by Daphne (daphne-defne-avkarogullari).
 export const LINKEDIN_URL =
   "https://www.linkedin.com/in/daphne-defne-avkarogullari/";
 
 export const GITHUB_URL = "https://github.com/D-phA";
 
-// TODO(RESUME_URL): replace "#" with a link to the hosted resume PDF
-// (for example /Daphne_Avkarogullari_Resume.pdf placed in /public).
-export const RESUME_URL = "#";
-
 export const profile = {
   name: "Daphne Avkarogullari",
-  // One-line positioning, mined from job-search-criteria.md.
   tagline:
-    "ECE undergraduate at Carnegie Mellon working at the intersection of software and hardware.",
+    "I am an ECE undergraduate at Carnegie Mellon. I work where software meets hardware.",
   location: "San Francisco Bay Area, CA",
   status: "Seeking a Summer 2027 technical internship",
 };
@@ -44,7 +23,7 @@ export const nav = [
 // Longer bio paragraphs for the About section.
 export const about = {
   paragraphs: [
-    "I am a junior studying Electrical and Computer Engineering at Carnegie Mellon University, with a Minor in Machine Learning and a 3.8 GPA. I am drawn to the intersection of software and hardware, and I genuinely enjoy everything about computers.",
+    "I am a junior studying Electrical and Computer Engineering at Carnegie Mellon University, with an AI/ML minor and a 3.8 GPA. I am drawn to the intersection of software and hardware, and I genuinely enjoy everything about computers.",
     "My interests span systems (operating systems, compilers, and runtimes), hardware and embedded engineering, ML and AI systems and efficiency, and quantitative engineering. I am comfortable close to the metal and across the stack, and I like learning quickly across unfamiliar territory.",
     "So far that has meant building policy and configuration infrastructure for cloud-delivered security at Cisco, shipping full-stack features at Amazon, and building hardware and computer-vision projects from scratch at CMU hackathons.",
   ],
@@ -111,11 +90,12 @@ export const experience: ExperienceItem[] = [
 ];
 
 export interface MediaSlot {
-  // TODO: put real files in /public/media and set src to e.g. "/media/dunes-1.jpg".
-  // Leave src empty ("") to render an on-page placeholder tile.
+  /** Empty renders a placeholder tile instead of a broken image. */
   src: string;
   alt: string;
   caption: string;
+  /** Set for a silent looping clip; `src` is then used as its poster. */
+  video?: { mp4: string; webm: string };
 }
 
 export interface Project {
@@ -149,19 +129,16 @@ export const projects: Project[] = [
     repoUrl: "https://github.com/D-phA/DunesTowerDefense",
     repoNote: "Build18 team project; this is my attributed repository, which credits the original team repo in its README.",
     media: [
-      // TODO(media): add a gameplay photo or the projected sandbox to
-      // /public/media (e.g. dunes-1.jpg) and set src to "/media/dunes-1.jpg".
-      // Until src is set, a tasteful "Media coming soon" tile renders here.
       {
-        src: "",
-        alt: "Dunes Tower Defense: topographic projection on the sandbox",
-        caption: "Topographic projection on the physical sandbox",
+        src: "media/dunes-demo-poster.jpg",
+        alt: "Sand in the box, lit by the projected height map, with 3D-printed towers on it and a hand reshaping the terrain",
+        caption: "Reshaping the sand; the height map follows in real time",
+        video: { mp4: "media/dunes-demo.mp4", webm: "media/dunes-demo.webm" },
       },
-      // TODO(media): add a demo video still or OpenCV detection screenshot.
       {
-        src: "",
-        alt: "Dunes Tower Defense: OpenCV tower-piece detection",
-        caption: "OpenCV tower-piece detection synced with game state",
+        src: "media/dunes-1.jpg",
+        alt: "Build18 demo table: the projector rig above the sandbox with people playing",
+        caption: "The rig at Build18: projector overhead, depth camera beside it",
       },
     ],
   },
@@ -179,9 +156,6 @@ export const projects: Project[] = [
     // No public repo for FanBuddy.
     repoNote: "No public repo yet.",
     media: [
-      // TODO(media): add a photo of the FanBuddy build to /public/media
-      // (e.g. fanbuddy-1.jpg) and set src to "/media/fanbuddy-1.jpg".
-      // Until src is set, a tasteful "Media coming soon" tile renders here.
       {
         src: "",
         alt: "FanBuddy Robot: the 3D-printed person-tracking fan",

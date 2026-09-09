@@ -36,7 +36,7 @@ export function Footer() {
               href={LINKEDIN_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-accent-500 to-iris-500 px-5 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_-10px_rgba(56,189,248,0.6)] transition-transform duration-200 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 rounded-md bg-accent-400 px-5 py-3 text-sm font-semibold text-ink-950 transition-colors duration-200 hover:bg-accent-300"
             >
               <LinkedInIcon /> Connect on LinkedIn
             </a>

@@ -4,12 +4,33 @@ import { Section } from "./Section";
 import { Reveal } from "./Reveal";
 import { GitHubIcon, ArrowIcon } from "./icons";
 
-/** A media tile: renders a real image if a src is provided, otherwise a
- * clearly-marked placeholder so Daphne knows exactly where to drop assets. */
 function Media({ slot }: { slot: MediaSlot }) {
+  if (slot.video) {
+    return (
+      <figure className="overflow-hidden rounded-lg border border-ink-700/70">
+        <video
+          poster={slot.src}
+          aria-label={slot.alt}
+          className="h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+        >
+          <source src={slot.video.webm} type="video/webm" />
+          <source src={slot.video.mp4} type="video/mp4" />
+        </video>
+        <figcaption className="bg-ink-800/70 px-3 py-2 text-xs text-mist-400">
+          {slot.caption}
+        </figcaption>
+      </figure>
+    );
+  }
+
   if (slot.src) {
     return (
-      <figure className="overflow-hidden rounded-xl border border-ink-700/70">
+      <figure className="overflow-hidden rounded-lg border border-ink-700/70">
         <img
           src={slot.src}
           alt={slot.alt}
@@ -25,12 +46,9 @@ function Media({ slot }: { slot: MediaSlot }) {
     );
   }
 
-  // No real asset yet: render a tasteful placeholder tile. We intentionally
-  // show a neutral "Media coming soon" label plus the descriptive alt text,
-  // never a raw "TODO" string, so the card looks finished rather than broken.
   return (
     <div
-      className="flex min-h-40 flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-ink-600 bg-ink-800/40 p-6 text-center"
+      className="flex min-h-40 flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-ink-600 bg-ink-800/40 p-6 text-center"
       role="img"
       aria-label={slot.alt}
     >
@@ -58,7 +76,7 @@ function ProjectCard({ project }: { project: Project }) {
   return (
     <article
       className={
-        "group rounded-2xl border border-ink-700/70 bg-ink-850/50 p-6 transition-all duration-300 hover:border-accent-400/40 hover:shadow-[0_24px_60px_-30px_rgba(56,189,248,0.5)] sm:p-8 " +
+        "group rounded-lg border border-ink-700/70 bg-ink-850/50 p-6 transition-all duration-300 hover:border-accent-400/40 hover:shadow-[0_24px_60px_-30px_rgba(56,189,248,0.5)] sm:p-8 " +
         (project.featured ? "ring-1 ring-accent-400/20" : "")
       }
     >
@@ -82,16 +100,12 @@ function ProjectCard({ project }: { project: Project }) {
         {project.blurb}
       </p>
 
-      <ul className="mt-4 space-y-2.5">
+      <ul className="prose-bullets mt-4 space-y-2.5">
         {project.bullets.map((b, i) => (
           <li
             key={i}
             className="flex gap-3 text-sm leading-relaxed text-mist-300"
           >
-            <span
-              className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-accent-400"
-              aria-hidden="true"
-            />
             <span>{b}</span>
           </li>
         ))}
@@ -141,7 +155,7 @@ function ProjectCard({ project }: { project: Project }) {
 
 export function Projects() {
   return (
-    <Section id="projects" eyebrow="Projects" title="Things I've built">
+    <Section id="projects" title="Projects">
       <div className="space-y-8">
         {projects.map((project, i) => (
           <Reveal key={project.name} delay={i * 100}>

@@ -1,23 +1,20 @@
 import { about } from "../data/content";
 import { Section } from "./Section";
-import { Reveal } from "./Reveal";
 
 export function About() {
   const { paragraphs, education } = about;
 
   return (
-    <Section id="about" eyebrow="About" title="Hi, I'm Daphne.">
+    <Section id="about" title="Hi, I'm Daphne.">
       <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
-        <Reveal>
-          <div className="space-y-5 text-base leading-relaxed text-mist-300 sm:text-lg">
+        <div className="space-y-5 text-base leading-relaxed text-mist-300 sm:text-lg">
             {paragraphs.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
           </div>
-        </Reveal>
+        
 
-        <Reveal delay={120}>
-          <aside className="rounded-2xl border border-ink-700/70 bg-ink-850/60 p-6 shadow-[0_20px_50px_-30px_rgba(0,0,0,0.8)]">
+        <aside className="rounded-lg border border-ink-700/70 bg-ink-850/60 p-6 shadow-[0_20px_50px_-30px_rgba(0,0,0,0.8)]">
             <h3 className="text-sm font-semibold uppercase tracking-[0.15em] text-accent-400">
               Education
             </h3>
@@ -56,7 +53,7 @@ export function About() {
               ))}
             </ul>
           </aside>
-        </Reveal>
+        
       </div>
     </Section>
   );

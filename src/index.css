@@ -1,9 +1,5 @@
 @import "tailwindcss";
 
-/* ------------------------------------------------------------------ */
-/* Design tokens (Tailwind v4 theme). Deep-navy base with a cool       */
-/* teal -> indigo accent. Tuned for AA contrast on the dark surface.   */
-/* ------------------------------------------------------------------ */
 @theme {
   --color-ink-950: #070b16;
   --color-ink-900: #0b1120;
@@ -17,44 +13,21 @@
   --color-mist-300: #aab6d4;
   --color-mist-400: #8493b8;
 
-  --color-accent-300: #7dd3fc;
-  --color-accent-400: #38bdf8;
-  --color-accent-500: #0ea5e9;
-  --color-iris-400: #818cf8;
-  --color-iris-500: #6366f1;
+  /* Phosphor amber on navy. The previous accent was #38bdf8 and #818cf8,
+     which are sky-400 and indigo-400 unchanged from Tailwind's defaults. */
+  --color-accent-300: #ffc94d;
+  --color-accent-400: #ffb000;
+  --color-accent-500: #d99000;
 
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system,
-    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    monospace;
 
-  --shadow-glow: 0 0 0 1px rgba(56, 189, 248, 0.15),
-    0 18px 50px -12px rgba(14, 165, 233, 0.35);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4);
 
-  --animate-float: float 7s ease-in-out infinite;
-  --animate-drift: drift 18s ease-in-out infinite alternate;
 }
 
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-14px);
-  }
-}
-
-@keyframes drift {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  100% {
-    transform: translate3d(4%, -3%, 0) scale(1.08);
-  }
-}
-
-/* ------------------------------------------------------------------ */
-/* Base                                                                */
-/* ------------------------------------------------------------------ */
 html {
   scroll-behavior: smooth;
   /* offset for the sticky header when jumping to anchors */
@@ -97,4 +70,13 @@ body {
 ::selection {
   background: color-mix(in srgb, var(--color-accent-400) 35%, transparent);
   color: var(--color-mist-100);
+}
+
+/* Bullets are real list markers, not decorative coloured dots. */
+.prose-bullets {
+  list-style: disc;
+  padding-left: 1.15rem;
+}
+.prose-bullets > li::marker {
+  color: var(--color-mist-400);
 }

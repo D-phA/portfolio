@@ -1,10 +1,9 @@
 import { experience } from "../data/content";
 import { Section } from "./Section";
-import { Reveal } from "./Reveal";
 
 export function Experience() {
   return (
-    <Section id="experience" eyebrow="Experience" title="Where I've worked">
+    <Section id="experience" title="Experience">
       <div className="relative">
         {/* Vertical timeline rail (decorative, hidden on small screens) */}
         <div
@@ -13,15 +12,13 @@ export function Experience() {
         />
 
         <ol className="space-y-10">
-          {experience.map((job, i) => (
-            <Reveal as="li" key={job.company} delay={i * 100}>
-              <div className="relative sm:pl-10">
-                {/* Timeline node */}
+          {experience.map((job) => (
+            <li key={`${job.company}-${job.dates}`} className="relative sm:pl-10">
                 <span
                   className="absolute left-0 top-2 hidden h-3.5 w-3.5 rounded-full border-2 border-accent-400 bg-ink-900 sm:block"
                   aria-hidden="true"
                 />
-                <article className="rounded-2xl border border-ink-700/70 bg-ink-850/50 p-6 transition-colors duration-300 hover:border-accent-400/40 sm:p-7">
+                <article className="rounded-lg border border-ink-700/70 bg-ink-850/50 p-6 transition-colors duration-300 hover:border-accent-400/40 sm:p-7">
                   <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                     <h3 className="text-xl font-bold text-mist-100">
                       {job.company}
@@ -39,16 +36,12 @@ export function Experience() {
                     {job.summary}
                   </p>
 
-                  <ul className="mt-4 space-y-2.5">
+                  <ul className="prose-bullets mt-4 space-y-2.5">
                     {job.bullets.map((b, j) => (
                       <li
                         key={j}
                         className="flex gap-3 text-sm leading-relaxed text-mist-300"
                       >
-                        <span
-                          className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-accent-400"
-                          aria-hidden="true"
-                        />
                         <span>{b}</span>
                       </li>
                     ))}
@@ -65,8 +58,7 @@ export function Experience() {
                     ))}
                   </ul>
                 </article>
-              </div>
-            </Reveal>
+            </li>
           ))}
         </ol>
       </div>

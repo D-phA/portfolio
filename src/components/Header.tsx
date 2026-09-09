@@ -40,7 +40,7 @@ export function Header() {
           className="group flex items-center gap-2 text-mist-100"
           aria-label={`${profile.name} home`}
         >
-          <span className="grid h-9 w-9 place-items-center rounded-lg border border-accent-400/40 bg-ink-800/60 text-sm font-bold tracking-tight text-transparent bg-clip-text [background-image:linear-gradient(120deg,var(--color-accent-400),var(--color-iris-400))]">
+          <span className="grid h-9 w-9 place-items-center rounded-lg border border-accent-400/40 bg-ink-800/60 text-sm font-bold tracking-tight text-accent-400">
             {initials}
           </span>
           <span className="hidden text-sm font-semibold tracking-tight text-mist-200 transition-colors group-hover:text-mist-100 sm:inline">
