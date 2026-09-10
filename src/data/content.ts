@@ -1,5 +1,8 @@
 // Every string the site renders lives here.
 
+// The hosted copy carries no phone number; the full version stays private.
+export const RESUME_URL = "Daphne_Avkarogullari_Resume.pdf";
+
 export const LINKEDIN_URL =
   "https://www.linkedin.com/in/daphne-defne-avkarogullari/";
 
@@ -10,7 +13,6 @@ export const profile = {
   tagline:
     "I am an ECE undergraduate at Carnegie Mellon. I work where software meets hardware.",
   location: "San Francisco Bay Area, CA",
-  status: "Seeking a Summer 2027 technical internship",
 };
 
 export const nav = [
@@ -66,7 +68,7 @@ export const experience: ExperienceItem[] = [
     summary:
       "Policy and configuration generation and distribution infrastructure behind Cisco's cloud-delivered security service (Umbrella) and the unified-policy layer of Cisco Secure Access (SSE).",
     bullets: [
-      "Diagnosed a cross-filesystem (EXDEV) failure that blocked a memory-backed (tmpfs) storage mode for a policy pipeline, then shipped a fix that unblocked the mode. The change cut drive writes by roughly 50 percent and pulled sustained write load from about 124 percent to about 64 percent of the drives' rated endurance, roughly doubling projected SSD lifespan.",
+      "Diagnosed a storage configuration issue causing excessive drive writes in a production data pipeline. The fix cut drive writes by roughly 50 percent, easing sustained write load well below rated drive endurance and roughly doubling projected SSD lifespan. It needed careful reasoning about concurrency and race conditions, and Python benchmarking to prove the gain held under load.",
       "Designed and implemented a reliability framework with checksums and integrity checks that reduced the volume of errors from a system core to the policy pipeline, meaningfully lowering operational load on the team. Built with Go, Python, and YAML, using Kafka and Kubernetes.",
       "Worked across several repositories with an industry-standard external tooling ecosystem, gaining hands-on experience with AWS (EKS, EC2, IAM, Secrets Manager, Certificate Manager), plus Ansible, Terraform, Jenkins, RabbitMQ, and Nginx.",
       "Built AI-enablement tooling for the team, including reusable skills, knowledge bases, and MCP servers.",

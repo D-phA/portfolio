@@ -1,5 +1,6 @@
 import {
   profile,
+  RESUME_URL,
   GITHUB_URL,
   LINKEDIN_URL,
 } from "../data/content";
@@ -29,19 +30,12 @@ export function Hero() {
       </div>
 
       <div className="mx-auto w-full max-w-6xl px-5 pt-28 pb-20 sm:px-8">
-        <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent-400/30 bg-ink-800/50 px-4 py-1.5 text-sm font-medium text-accent-300 backdrop-blur">
-          <span
-            className="h-2 w-2 rounded-full bg-accent-400"
-            aria-hidden="true"
-          />
-          {profile.status}
-        </p>
 
-        <h1 className="max-w-4xl text-5xl font-extrabold leading-[1.05] tracking-tight text-mist-100 sm:text-6xl lg:text-7xl">
+        <h1 className="max-w-4xl text-4xl font-semibold leading-[1.1] tracking-tight text-mist-100 sm:text-5xl">
           {profile.name}
         </h1>
 
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-mist-300 sm:text-xl">
+        <p className="mt-6 max-w-4xl text-lg leading-relaxed text-balance text-mist-300">
           {profile.tagline}
         </p>
 
@@ -64,6 +58,14 @@ export function Hero() {
             className="inline-flex items-center gap-2 rounded-lg border border-ink-600 bg-ink-800/40 px-5 py-3 text-sm font-semibold text-mist-100 backdrop-blur transition-colors duration-200 hover:border-accent-400/60 hover:text-accent-300"
           >
             <LinkedInIcon /> LinkedIn
+          </a>
+          <a
+            href={RESUME_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-md border border-ink-600 bg-ink-800/40 px-5 py-3 text-sm font-semibold text-mist-100 transition-colors duration-200 hover:border-accent-400/60 hover:text-accent-300"
+          >
+            Resume
           </a>
         </div>
 
